@@ -65,10 +65,17 @@
               <span></span>
             </div>
             <div class="terminal-body" id="terminal-body">
-              <!-- Terminal content dynamically populated in Commit 2 -->
               <div class="term-line">
                 <span class="term-prompt">suyash@zyora:~$</span>
-                <span class="term-command">echo "System Initialized..."</span>
+                <span class="term-command">./boot_sprint.sh</span>
+              </div>
+              <div class="term-line term-output" id="term-auto-output">
+                Initializing 15-Day Engineering Sprint... [OK]
+              </div>
+              <div id="term-history"></div>
+              <div class="term-input-wrapper">
+                <span class="term-prompt">suyash@zyora:~$</span>
+                <input type="text" id="term-input" class="term-input" placeholder="Type 'help', 'whoami', 'roadmap', or 'why'..." autocomplete="off">
               </div>
             </div>
           </div>
@@ -84,7 +91,45 @@
         
         <!-- About Grid container -->
         <div class="about-grid" id="about-container">
-          <!-- Content populated / enhanced in Commit 2 -->
+          <div class="glass-card info-card">
+            <div class="info-header">
+              <div class="info-icon">💡</div>
+              <div>
+                <h3>Engineering Identity</h3>
+                <span style="color: var(--accent-cyan); font-size: 0.85rem; font-family: var(--font-mono);">Software Engineer & AI Builder</span>
+              </div>
+            </div>
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+              I am <strong>Suyash Srivastava</strong>, a passionate software developer dedicated to crafting clean, scalable, and high-performance applications. I thrive on solving complex architectural challenges and turning ambitious concepts into polished, user-centric software.
+            </p>
+            <div class="skill-tags">
+              <span class="skill-tag">Full-Stack Architecture</span>
+              <span class="skill-tag">Agentic AI Systems</span>
+              <span class="skill-tag">UI/UX Excellence</span>
+              <span class="skill-tag">System Design</span>
+            </div>
+          </div>
+
+          <div class="glass-card info-card">
+            <div class="info-header">
+              <div class="info-icon">⚡</div>
+              <div>
+                <h3>Technical Arsenal</h3>
+                <span style="color: var(--accent-purple); font-size: 0.85rem; font-family: var(--font-mono);">Core Technologies & Tools</span>
+              </div>
+            </div>
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+              My stack bridges modern frontend reactivity with robust backend engineering and cutting-edge LLM integrations, engineered for speed and reliability.
+            </p>
+            <div class="skill-tags">
+              <span class="skill-tag">JavaScript / ES6+</span>
+              <span class="skill-tag">Node.js LTS</span>
+              <span class="skill-tag">HTML5 / Modern CSS</span>
+              <span class="skill-tag">Git / GitHub Flow</span>
+              <span class="skill-tag">REST & WebSockets</span>
+              <span class="skill-tag">LLM API / Tool Calling</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -97,12 +142,12 @@
         
         <!-- Filter Controls -->
         <div class="roadmap-controls" id="roadmap-controls">
-          <!-- Filters added -->
+          <!-- Filters dynamically rendered via JS -->
         </div>
 
         <!-- Roadmap Cards Grid -->
         <div class="roadmap-grid" id="roadmap-grid">
-          <!-- Roadmap cards added -->
+          <!-- Roadmap cards dynamically rendered via JS -->
         </div>
       </div>
     </section>
@@ -112,7 +157,17 @@
       <div class="container">
         <!-- Why Joined Banner structure -->
         <div class="why-joined-banner" id="why-joined-container">
-          <!-- One line mission statement added -->
+          <div class="quote-icon">“</div>
+          <p class="why-joined-text">
+            "I joined Zyora to push past traditional development boundaries, master cutting-edge agentic workflows, and ship world-class, production-ready software in 15 intensive days."
+          </p>
+          <div class="why-joined-author">
+            <div class="author-avatar">S</div>
+            <div class="author-details">
+              <h4>Suyash Srivastava</h4>
+              <p>Engineering Intern @ Zyora Sprint 2026</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
