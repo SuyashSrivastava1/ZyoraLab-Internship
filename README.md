@@ -1,6 +1,6 @@
 # Developer Launch Page — ZyoraLab Internship
 
-An interactive, premium single-page **Developer Launch Page** and **15-Day Roadmap Dashboard** created by [Suyash Srivastava](https://github.com/SuyashSrivastava1) for the ZyoraLab Internship challenge.
+An interactive, premium single-page **Developer Launch Page** and **15-Day Roadmap Dashboard** created by [Suyash Srivastava](https://github.com/SuyashSrivastava1) for the ZyoraLab Internship.
 
 Built with pure **HTML5, Vanilla CSS, and JavaScript** inside a self-contained single file (`index.html`), following the **Indigo Clarity** design system.
 
