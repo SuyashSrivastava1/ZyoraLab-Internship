@@ -1,1176 +1,274 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Developer Launch Page - ZyoraLabs</title>
-  <meta name="description" content="15-Day Developer Launch Roadmap - Pushing the boundaries of code and aesthetics.">
-  
-  <!-- Inter Font from Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <style>
-    /* Design System & Variables */
-    :root {
-      --primary: #4F46E5;
-      --primary-hover: #4338CA;
-      --primary-light: #EEF2FF;
-      --primary-glow: rgba(79, 70, 229, 0.08);
-      --secondary: #F3F4F6;
-      --bg-page: #FFFFFF;
-      --bg-card: #FFFFFF;
-      --bg-quote: #F9FAFB;
-      --border-color: #E5E7EB;
-      --text-primary: #1F2937;
-      --text-secondary: #4B5563;
-      --text-muted: #9CA3AF;
-      --accent: #EA580C;
-      --accent-light: #FFEDD5;
-      --badge-bg: #EEF2FF;
-      --badge-text: #4F46E5;
-      --badge-border: #E0E7FF;
-      --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
-      --hover-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    [data-theme="dark"] {
-      --primary: #6366F1;
-      --primary-hover: #4F46E5;
-      --primary-light: #1E1B4B;
-      --primary-glow: rgba(99, 102, 241, 0.15);
-      --secondary: #1F2937;
-      --bg-page: #0B0F19;
-      --bg-card: #111827;
-      --bg-quote: #1F2937;
-      --border-color: #374151;
-      --text-primary: #F9FAFB;
-      --text-secondary: #D1D5DB;
-      --text-muted: #6B7280;
-      --accent: #F97316;
-      --accent-light: #431407;
-      --badge-bg: #1E1B4B;
-      --badge-text: #A5B4FC;
-      --badge-border: #312E81;
-      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-      --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Base Resets */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: var(--bg-page);
-      color: var(--text-primary);
-      line-height: 1.5;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0 20px;
-    }
-
-    /* Outer layout container to mimic browser viewport center */
-    .app-container {
-      width: 100%;
-      max-width: 680px;
-      margin: 40px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-
-    /* Header styling */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--border-color);
-      transition: border-color 0.3s ease;
-    }
-
-    .logo {
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: var(--primary);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: var(--transition);
-    }
-
-    .logo span {
-      color: var(--text-primary);
-      font-weight: 500;
-    }
-
-    .logo:hover {
-      opacity: 0.9;
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .nav-link {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: var(--transition);
-      position: relative;
-    }
-
-    .nav-link:hover {
-      color: var(--primary);
-    }
-
-    /* Subtle dot in header */
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background-color: var(--primary);
-      border-radius: 50%;
-      bottom: -6px;
-      left: 50%;
-      transform: translateX(-50%) scale(0);
-      transition: var(--transition);
-    }
-
-    .nav-link:hover::after {
-      transform: translateX(-50%) scale(1);
-    }
-
-    /* Theme Toggle */
-    .theme-toggle-btn {
-      background: none;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      width: 34px;
-      height: 34px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-secondary);
-      transition: var(--transition);
-    }
-
-    .theme-toggle-btn:hover {
-      background-color: var(--secondary);
-      color: var(--primary);
-      border-color: var(--primary);
-    }
-
-    .theme-toggle-btn svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    .theme-toggle-btn .sun-icon {
-      display: none;
-    }
-
-    [data-theme="dark"] .theme-toggle-btn .sun-icon {
-      display: block;
-    }
-
-    [data-theme="dark"] .theme-toggle-btn .moon-icon {
-      display: none;
-    }
-
-    /* Hero section */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-      margin-top: 10px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      background-color: var(--badge-bg);
-      border: 1px solid var(--badge-border);
-      border-radius: 20px;
-      font-size: 0.725rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      color: var(--badge-text);
-      text-transform: uppercase;
-      transition: var(--transition);
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text-primary);
-    }
-
-    .bio {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      max-width: 100%;
-    }
-
-    .quote-box {
-      width: 100%;
-      background-color: var(--bg-quote);
-      border-left: 3px solid var(--primary);
-      border-radius: 0 8px 8px 0;
-      padding: 16px 20px;
-      margin-top: 4px;
-      transition: var(--transition);
-    }
-
-    .quote-box p {
-      font-size: 0.925rem;
-      font-style: italic;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    /* Progress & Filter Controls Section */
-    .controls-panel {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: var(--card-shadow);
-      transition: var(--transition);
-    }
-
-    .progress-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    .progress-percent {
-      color: var(--primary);
-    }
-
-    .progress-bar-container {
-      width: 100%;
-      height: 8px;
-      background-color: var(--secondary);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .progress-bar-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--primary) 0%, #6366f1 100%);
-      border-radius: 4px;
-      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Filters row */
-    .filters-row {
-      display: flex;
-      gap: 8px;
-      border-top: 1px solid var(--border-color);
-      padding-top: 14px;
-      margin-top: 4px;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .filters-row::-webkit-scrollbar {
-      display: none;
-    }
-
-    .filter-btn {
-      background: none;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 6px 12px;
-      font-size: 0.775rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: var(--transition);
-      white-space: nowrap;
-    }
-
-    .filter-btn:hover {
-      background-color: var(--secondary);
-      color: var(--text-primary);
-    }
-
-    .filter-btn.active {
-      background-color: var(--primary-light);
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-
-    /* Roadmap Section Header */
-    .roadmap-section-title {
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-top: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    /* Timeline roadmap list */
-    .roadmap-list {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .roadmap-item {
-      display: flex;
-      flex-direction: column;
-      border-bottom: 1px solid var(--border-color);
-      padding: 18px 0;
-      transition: var(--transition);
-    }
-
-    /* Main visible row of roadmap item */
-    .roadmap-main {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      cursor: pointer;
-      user-select: none;
-      gap: 16px;
-    }
-
-    /* Custom Checkbox styles */
-    .checkbox-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 20px;
-      border: 2px solid var(--border-color);
-      border-radius: 6px;
-      cursor: pointer;
-      transition: var(--transition);
-      background-color: var(--bg-card);
-      flex-shrink: 0;
-    }
-
-    .checkbox-container:hover {
-      border-color: var(--primary);
-      background-color: var(--primary-light);
-    }
-
-    .checkbox-container svg {
-      width: 12px;
-      height: 12px;
-      fill: none;
-      stroke: #FFFFFF;
-      stroke-width: 3px;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      transform: scale(0);
-      transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .roadmap-item.completed .checkbox-container {
-      background-color: var(--primary);
-      border-color: var(--primary);
-    }
-
-    .roadmap-item.completed .checkbox-container svg {
-      transform: scale(1);
-    }
-
-    /* Day badge styling to match screenshot */
-    .day-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4px 8px;
-      border: 1px solid var(--badge-border);
-      border-radius: 6px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      color: var(--badge-text);
-      background-color: var(--badge-bg);
-      flex-shrink: 0;
-      min-width: 60px;
-    }
-
-    /* Text details info */
-    .day-details {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      gap: 2px;
-    }
-
-    .day-title {
-      font-size: 0.925rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      transition: var(--transition);
-    }
-
-    .day-subtitle {
-      font-size: 0.775rem;
-      color: var(--text-muted);
-    }
-
-    /* Checked/Completed text dimming */
-    .roadmap-item.completed .day-title {
-      text-decoration: line-through;
-      color: var(--text-muted);
-    }
-
-    /* Chevron indicators */
-    .chevron-icon {
-      width: 16px;
-      height: 16px;
-      color: var(--text-muted);
-      transition: transform 0.25s ease;
-      flex-shrink: 0;
-    }
-
-    .roadmap-item.expanded .chevron-icon {
-      transform: rotate(180deg);
-      color: var(--primary);
-    }
-
-    /* Accordion Expandable panel */
-    .roadmap-expandable {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.25s cubic-bezier(0, 1, 0, 1);
-      padding-left: 96px; /* align with text start */
-    }
-
-    .roadmap-item.expanded .roadmap-expandable {
-      max-height: 1000px;
-      transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
-    }
-
-    .expandable-content {
-      padding-top: 12px;
-      padding-bottom: 6px;
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .topics-list {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      list-style-type: none;
-    }
-
-    .topics-list li {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .topics-list li::before {
-      content: "✦";
-      color: var(--primary);
-      font-size: 0.65rem;
-    }
-
-    /* Footer Card */
-    .footer-card {
-      background: linear-gradient(135deg, var(--primary) 0%, #4338CA 100%);
-      border-radius: 12px;
-      padding: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);
-      margin-top: 8px;
-      gap: 16px;
-    }
-
-    .footer-text-block {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .footer-text-block h3 {
-      color: #FFFFFF;
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
-
-    .footer-text-block p {
-      color: #C7D2FE;
-      font-size: 0.8rem;
-    }
-
-    .footer-btn {
-      background-color: #FFFFFF;
-      color: var(--primary);
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .footer-btn:hover {
-      transform: scale(1.04);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-
-    .footer-btn:active {
-      transform: scale(0.98);
-    }
-
-    /* Screen adjustments */
-    @media (max-width: 600px) {
-      .app-container {
-        gap: 24px;
-        margin: 24px 0;
-      }
-      .hero h1 {
-        font-size: 1.75rem;
-      }
-      .roadmap-expandable {
-        padding-left: 0;
-        margin-left: 36px;
-      }
-      .footer-card {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-      }
-      .footer-btn {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-  </style>
+  <title>Suyash Srivastava — B.Tech Student & Web Developer Portfolio</title>
+  <meta name="description" content="Personal portfolio, 15-day developer launch roadmap, and technical showcase of Suyash Srivastava.">
 </head>
 <body>
 
-  <div class="app-container">
-    <!-- Header -->
-    <header>
-      <a href="#" class="logo">
-        Zyora<span>Labs</span>
-      </a>
-      <div class="nav-actions">
-        <a href="https://github.com/SuyashSrivastava1" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub</a>
-        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
-          <!-- Moon Icon (Dark Mode) -->
-          <svg class="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-          </svg>
-          <!-- Sun Icon (Light Mode) -->
-          <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m2.828-9.9a5 5 0 11-7.07 7.07 5 5 0 017.07-7.07z"></path>
-          </svg>
-        </button>
-      </div>
-    </header>
+  <!-- Site Header & Main Navigation -->
+  <header>
+    <a href="#" aria-label="Home — ZyoraLabs"><strong>Zyora</strong>Labs</a>
+    <nav aria-label="Main Navigation">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#roadmap">15-Day Roadmap</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="badge">
-        <span style="font-size: 0.8rem; line-height: 1;">✦</span> Developer Launch Page
-      </div>
-      <h1>Suyash Srivastava</h1>
-      <p class="bio">
-        Hi, I'm Suyash. I'm a B.Tech student pushing the boundaries of code and aesthetics. I'm passionate about building clean, functional, and delightful digital experiences.
-      </p>
-      <div class="quote-box">
-        <p>"I joined this challenge to push my creative limits and master new technologies through rapid, daily iteration."</p>
-      </div>
+  <hr>
+
+  <!-- Main Content Structure -->
+  <main id="main-content">
+
+    <!-- About / Hero Section -->
+    <section id="about" aria-labelledby="about-heading">
+      <article>
+        <header>
+          <p><small>✦ DEVELOPER LAUNCH PAGE</small></p>
+          <h1 id="about-heading">Suyash Srivastava</h1>
+          <h2>B.Tech Student & Software Developer</h2>
+        </header>
+
+        <figure>
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Portrait of Suyash Srivastava, B.Tech student and developer passionate about clean code and aesthetics" width="200" height="200">
+          <figcaption>Pushing the boundaries of code and aesthetics through rapid daily iteration.</figcaption>
+        </figure>
+
+        <p>
+          Hi, I'm Suyash. I'm a B.Tech student pushing the boundaries of code and aesthetics. I'm passionate about building clean, functional, and delightful digital experiences using modern web standards and architectural best practices.
+        </p>
+
+        <blockquote>
+          <p>"I joined this challenge to push my creative limits and master new technologies through rapid, daily iteration."</p>
+          <footer>— <cite>Suyash Srivastava, ZyoraLab Internship</cite></footer>
+        </blockquote>
+      </article>
     </section>
 
-    <!-- Controls, Progress Bar & Filters -->
-    <section class="controls-panel">
-      <div class="progress-header">
-        <span>Roadmap Progress</span>
-        <span class="progress-percent" id="progress-text">0% Completed</span>
-      </div>
-      <div class="progress-bar-container">
-        <div class="progress-bar-fill" id="progress-bar"></div>
-      </div>
-      <div class="filters-row">
-        <button class="filter-btn active" data-filter="all">All Days</button>
-        <button class="filter-btn" data-filter="week1">Week 1 — Foundations</button>
-        <button class="filter-btn" data-filter="week2">Week 2 — JS & React</button>
-        <button class="filter-btn" data-filter="week3">Week 3 — Build & Ship</button>
-      </div>
+    <hr>
+
+    <!-- 15-Day Roadmap Timeline Section -->
+    <section id="roadmap" aria-labelledby="roadmap-heading">
+      <h2 id="roadmap-heading">The 15-Day Roadmap</h2>
+      <p>Follow my technical journey through the 3-week foundation, build, and shipping phases. Click any day below to reveal detailed learning topics in native HTML:</p>
+
+      <ol>
+        <li>
+          <details>
+            <summary><strong>DAY 01: Kickoff + Developer Workflow</strong> <small>(Week 1 — Foundations)</small></summary>
+            <p>Setting up a professional environment is the foundation of high-velocity development.</p>
+            <ul>
+              <li>Git Setup & SSH Configuration</li>
+              <li>Advanced terminal customizing & shell aliases</li>
+              <li>VS Code / IDE environment enhancements</li>
+              <li>Branching strategies and PR workflows</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details open>
+            <summary><strong>DAY 02: HTML Deep-Dive & Semantic Multi-Section Architecture</strong> <small>(Week 1 — Foundations)</small></summary>
+            <p>Understanding semantic markup and structuring documents for maximum accessibility, SEO, and native browser features without reliance on CSS/JS.</p>
+            <ul>
+              <li>HTML5 Semantic Landmarks (&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, &lt;article&gt;, &lt;footer&gt;)</li>
+              <li>WAI-ARIA roles, landmark headings, and explicit screen reader optimizations</li>
+              <li>Native zero-JS accordions using &lt;details&gt; and &lt;summary&gt;</li>
+              <li>Accessible data structures (&lt;table&gt; with captions and scope attributes) and forms with explicit labels</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary><strong>DAY 03: CSS I — Box Model & Flexbox</strong> <small>(Week 1 — Foundations)</small></summary>
+            <p>Mastering layout alignment and understanding the mechanics of CSS rendering.</p>
+            <ul>
+              <li>Margin collapsing & box sizing</li>
+              <li>Flexbox alignment axes & wrapping patterns</li>
+              <li>Growth & Shrink coefficients (flex-grow, flex-shrink)</li>
+              <li>Grid overlay structures & flex styling pairings</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary><strong>DAY 04: CSS II — Responsive Design</strong> <small>(Week 1 — Foundations)</small></summary>
+            <p>Building designs that dynamically scale and align perfectly across all screen devices.</p>
+            <ul>
+              <li>Mobile-first media queries and breakpoints</li>
+              <li>CSS clamp(), min(), and max() fluid functions</li>
+              <li>Grid Areas, auto-fill, and auto-fit rules</li>
+              <li>Subgrid features & SVG scaling logic</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary><strong>DAY 05: JavaScript I — DOM & Events</strong> <small>(Week 1 — Foundations)</small></summary>
+            <p>Manipulating page structures dynamically and wiring up form validation and event listeners.</p>
+            <ul>
+              <li>Node queries, insertions, and removal APIs</li>
+              <li>Event propagation: capture, bubble, and preventDefault</li>
+              <li>Event delegation strategies for dynamic lists</li>
+              <li>Form input handling and live feedback</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary><strong>DAY 06: JavaScript II — Arrays, Objects & APIs</strong> <small>(Week 2 — JavaScript & React)</small></summary>
+            <p>Managing data transformations, asynchronous actions, and external network interactions.</p>
+            <ul>
+              <li>Functional array operations (map, filter, reduce)</li>
+              <li>Destructuring, rest parameters, and spread operations</li>
+              <li>Asynchronous promises, async/await, and fetch call cycles</li>
+              <li>Parsing & validating API inputs</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary><strong>DAY 07: React I — Components & Props</strong> <small>(Week 2 — JavaScript & React)</small></summary>
+            <p>Transitioning to declarative components and thinking in structured layout hierarchies.</p>
+            <ul>
+              <li>Understanding the Virtual DOM and JSX compile processes</li>
+              <li>Props passing, component structuring, and re-usability</li>
+              <li>Keys, list rendering, and fragment usage</li>
+              <li>Conditional rendering patterns</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary><strong>DAY 08: React II — State & Hooks</strong> <small>(Week 2 — JavaScript & React)</small></summary>
+            <p>Creating interactive components using React hooks and understanding state lifecycle cycles.</p>
+            <ul>
+              <li>useState: triggering re-renders & handling complex state objects</li>
+              <li>useEffect: handling side-effects, subscriptions, and cleanups</li>
+              <li>Rules of hooks & common mistakes</li>
+              <li>Controlled components & form interactions</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary><strong>DAY 09: 🚀 PROJECT KICKOFF</strong> <small>(Week 2 — Project Kickoff)</small></summary>
+            <p>Planning architecture, structuring source code templates, and aligning on product scope.</p>
+            <ul>
+              <li>Project wireframing and design layout validation</li>
+              <li>Boilerplate setup (Vite + React + CSS setup)</li>
+              <li>Folder architectures (components, hooks, pages, services)</li>
+              <li>GitHub Issue tracking & project boards setup</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary><strong>DAY 10: Team Build Day</strong> <small>(Week 2 — Project Kickoff)</small></summary>
+            <p>Pair programming, combining individual components into a cohesive core, and resolving conflicts.</p>
+            <ul>
+              <li>Merging feature branches & git conflict resolution</li>
+              <li>Interface integrations and local state validation</li>
+              <li>Conducting team review sessions and code checks</li>
+              <li>Shared utility and helper setup</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary><strong>DAY 11: Mid-Project Review</strong> <small>(Week 3 — Build, Ship & Demo)</small></summary>
+            <p>Gathering feedback on early beta builds, prioritizing adjustments, and verifying progress.</p>
+            <ul>
+              <li>UI audits and interactive usability checkups</li>
+              <li>Analyzing performance bottlenecks or rendering delays</li>
+              <li>Pruning excessive scopes to guarantee deployment timing</li>
+              <li>Staging environment deployments</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary><strong>DAY 12: Deployment & Git Collaboration</strong> <small>(Week 3 — Build, Ship & Demo)</small></summary>
+            <p>Deploying product structures to production hosts and verifying automation pipelines.</p>
+            <ul>
+              <li>Deploying on Vercel, Netlify, or GitHub Pages</li>
+              <li>Configuring environment variables & API limits</li>
+              <li>CI/CD setup with GitHub Actions</li>
+              <li>Checking security headers & HTTPS certificate bindings</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary><strong>DAY 13: Bug-fix & Polish</strong> <small>(Week 3 — Build, Ship & Demo)</small></summary>
+            <p>Addressing edge-cases, stabilizing layout shifts, and polishing core micro-animations.</p>
+            <ul>
+              <li>Core Web Vitals optimizations (LCP, CLS, FID)</li>
+              <li>Cross-device, cross-browser layout fixes</li>
+              <li>Custom animations and interface transitions</li>
+              <li>Code splitting, asset optimizations, and lazy loading</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary><strong>DAY 14: Final Submission</strong> <small>(Week 3 — Build, Ship & Demo)</small></summary>
+            <p>Finalizing code, packaging instructions, and preparing user documentation.</p>
+            <ul>
+              <li>Writing README guides, feature summaries, and user manuals</li>
+              <li>Final testing on main release branches</li>
+              <li>Asset packaging and release tagging</li>
+              <li>Pre-flight deployment checklist confirmation</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary><strong>DAY 15: 🎓 DEMO DAY</strong> <small>(Week 3 — Build, Ship & Demo)</small></summary>
+            <p>Showcasing the completed implementation to users and celebrating the learning path.</p>
+            <ul>
+              <li>Deploying finalized builds to production live servers</li>
+              <li>Conducting project showcase presentations</li>
+              <li>Receiving peer feedback & future roadmap planning</li>
+              <li>Celebrating graduation & next milestones definition</li>
+            </ul>
+          </details>
+        </li>
+      </ol>
     </section>
 
-    <!-- Roadmap timeline section -->
-    <section>
-      <h2 class="roadmap-section-title">The 15-Day Roadmap</h2>
-      <div class="roadmap-list" id="roadmap-list">
-        
-        <!-- Day 01 -->
-        <div class="roadmap-item" data-week="week1" id="day-1">
-          <div class="roadmap-main">
-            <div class="checkbox-container" aria-label="Mark Day 1 Completed">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-            </div>
-            <div class="day-badge">DAY 01</div>
-            <div class="day-details">
-              <span class="day-title">Kickoff + Developer Workflow</span>
-              <span class="day-subtitle">Week 1 — Foundations</span>
-            </div>
-            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div class="roadmap-expandable">
-            <div class="expandable-content">
-              <p>Setting up a professional environment is the foundation of high-velocity development.</p>
-              <ul class="topics-list">
-                <li>Git Setup & SSH Configuration</li>
-                <li>Advanced terminal customizing & shell aliases</li>
-                <li>VS Code / IDE environment enhancements</li>
-                <li>Branching strategies and PR workflows</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+  </main>
 
-        <!-- Day 02 -->
-        <div class="roadmap-item" data-week="week1" id="day-2">
-          <div class="roadmap-main">
-            <div class="checkbox-container" aria-label="Mark Day 2 Completed">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-            </div>
-            <div class="day-badge">DAY 02</div>
-            <div class="day-details">
-              <span class="day-title">HTML Deep-Dive</span>
-              <span class="day-subtitle">Week 1 — Foundations</span>
-            </div>
-            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div class="roadmap-expandable">
-            <div class="expandable-content">
-              <p>Understanding semantic markups and structuring details for accessibility and modern standards.</p>
-              <ul class="topics-list">
-                <li>HTML5 Semantic tags & Document Outlines</li>
-                <li>WAI-ARIA roles & Screen reader optimizations</li>
-                <li>SEO Meta tag hierarchies & Schema integration</li>
-                <li>Form validation & native constraints</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+  <hr>
 
-        <!-- Day 03 -->
-        <div class="roadmap-item" data-week="week1" id="day-3">
-          <div class="roadmap-main">
-            <div class="checkbox-container" aria-label="Mark Day 3 Completed">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-            </div>
-            <div class="day-badge">DAY 03</div>
-            <div class="day-details">
-              <span class="day-title">CSS I — Box Model & Flexbox</span>
-              <span class="day-subtitle">Week 1 — Foundations</span>
-            </div>
-            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div class="roadmap-expandable">
-            <div class="expandable-content">
-              <p>Mastering layout alignment and understanding the mechanics of CSS rendering.</p>
-              <ul class="topics-list">
-                <li>Margin collapsing & box sizing</li>
-                <li>Flexbox alignment axes & wrapping patterns</li>
-                <li>Growth & Shrink coefficients (flex-grow, flex-shrink)</li>
-                <li>Grid overlay structures & flex styling pairings</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+  <!-- Site Footer -->
+  <footer>
+    <p><small>&copy; 2026 Suyash Srivastava. Built with pure semantic HTML5 for the ZyoraLab Internship.</small></p>
+    <p>
+      <a href="https://github.com/SuyashSrivastava1" target="_blank" rel="noopener noreferrer">GitHub Profile</a> | 
+      <a href="https://github.com/SuyashSrivastava1/ZyoraLab-Internship" target="_blank" rel="noopener noreferrer">View Repository</a>
+    </p>
+  </footer>
 
-        <!-- Day 04 -->
-        <div class="roadmap-item" data-week="week1" id="day-4">
-          <div class="roadmap-main">
-            <div class="checkbox-container" aria-label="Mark Day 4 Completed">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-            </div>
-            <div class="day-badge">DAY 04</div>
-            <div class="day-details">
-              <span class="day-title">CSS II — Responsive Design</span>
-              <span class="day-subtitle">Week 1 — Foundations</span>
-            </div>
-            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div class="roadmap-expandable">
-            <div class="expandable-content">
-              <p>Building designs that dynamically scale and align perfectly on all screen devices.</p>
-              <ul class="topics-list">
-                <li>Mobile-first media queries and break points</li>
-                <li>CSS Clamp, Min, and Max fluid functions</li>
-                <li>Grid Areas, auto-fill, and auto-fit rules</li>
-                <li>Subgrid features & SVG scaling logic</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Day 05 -->
-        <div class="roadmap-item" data-week="week1" id="day-5">
-          <div class="roadmap-main">
-            <div class="checkbox-container" aria-label="Mark Day 5 Completed">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-            </div>
-            <div class="day-badge">DAY 05</div>
-            <div class="day-details">
-              <span class="day-title">JavaScript I — DOM & Events</span>
-              <span class="day-subtitle">Week 1 — Foundations</span>
-            </div>
-            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div class="roadmap-expandable">
-            <div class="expandable-content">
-              <p>Manipulating page structures dynamically and interacting with user inputs.</p>
-              <ul class="topics-list">
-                <li>Node queries, insertions, and removal API</li>
-                <li>Event propagation: capture, bubble, and preventDefault</li>
-                <li>Event delegation strategies for long lists</li>
-                <li>Working with forms, datasets, and animations</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Day 06 -->
-        <div class="roadmap-item" data-week="week2" id="day-6">
-          <div class="roadmap-main">
-            <div class="checkbox-container" aria-label="Mark Day 6 Completed">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-            </div>
-            <div class="day-badge">DAY 06</div>
-            <div class="day-details">
-              <span class="day-title">JavaScript II — Arrays, Objects & APIs</span>
-              <span class="day-subtitle">Week 2 — JavaScript & React</span>
-            </div>
-            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div class="roadmap-expandable">
-            <div class="expandable-content">
-              <p>Managing data transformations, asynchronous actions, and external network interactions.</p>
-              <ul class="topics-list">
-                <li>Functional array operations (map, filter, reduce)</li>
-                <li>Destructuring, rest parameters, and spread operations</li>
-                <li>Asynchronous promises, async/await, and fetch call cycles</li>
-                <li>Parsing & validating API inputs</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Day 07 -->
-        <div class="roadmap-item" data-week="week2" id="day-7">
-          <div class="roadmap-main">
-            <div class="checkbox-container" aria-label="Mark Day 7 Completed">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-            </div>
-            <div class="day-badge">DAY 07</div>
-            <div class="day-details">
-              <span class="day-title">React I — Components & Props</span>
-              <span class="day-subtitle">Week 2 — JavaScript & React</span>
-            </div>
-            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div class="roadmap-expandable">
-            <div class="expandable-content">
-              <p>Transitioning to declarative components and thinking in structured layout hierarchies.</p>
-              <ul class="topics-list">
-                <li>Understanding the Virtual DOM and JSX compile processes</li>
-                <li>Props passing, component structuring, and re-usability</li>
-                <li>Keys, lists rendering, and fragment usage</li>
-                <li>Conditional rendering layouts</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Day 08 -->
-        <div class="roadmap-item" data-week="week2" id="day-8">
-          <div class="roadmap-main">
-            <div class="checkbox-container" aria-label="Mark Day 8 Completed">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-            </div>
-            <div class="day-badge">DAY 08</div>
-            <div class="day-details">
-              <span class="day-title">React II — State & Hooks</span>
-              <span class="day-subtitle">Week 2 — JavaScript & React</span>
-            </div>
-            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div class="roadmap-expandable">
-            <div class="expandable-content">
-              <p>Creating interactive components using React hooks and understanding state hooks cycles.</p>
-              <ul class="topics-list">
-                <li>useState: trigger re-renders & handling complex states</li>
-                <li>useEffect: handling side-effects, subscriptions, and cleanups</li>
-                <li>Rules of hooks & common mistakes</li>
-                <li>Controlled components & form interactions</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Day 09 -->
-        <div class="roadmap-item" data-week="week2" id="day-9">
-          <div class="roadmap-main">
-            <div class="checkbox-container" aria-label="Mark Day 9 Completed">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-            </div>
-            <div class="day-badge">DAY 09</div>
-            <div class="day-details">
-              <span class="day-title">🚀 PROJECT KICKOFF</span>
-              <span class="day-subtitle">Week 2 — Project Kickoff</span>
-            </div>
-            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div class="roadmap-expandable">
-            <div class="expandable-content">
-              <p>Planning architecture, structuring source code templates, and aligning on product scope.</p>
-              <ul class="topics-list">
-                <li>Project wireframing and design layouts validation</li>
-                <li>Boilerplate setup (Vite + React + CSS setup)</li>
-                <li>Folder styling architectures (components, hooks, pages)</li>
-                <li>Github Issue tracking & roadmap boards setup</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Day 10 -->
-        <div class="roadmap-item" data-week="week2" id="day-10">
-          <div class="roadmap-main">
-            <div class="checkbox-container" aria-label="Mark Day 10 Completed">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-            </div>
-            <div class="day-badge">DAY 10</div>
-            <div class="day-details">
-              <span class="day-title">Team Build Day</span>
-              <span class="day-subtitle">Week 2 — Project Kickoff</span>
-            </div>
-            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div class="roadmap-expandable">
-            <div class="expandable-content">
-              <p>Pair programming, combining individual parts into a cohesive code core, and conflict resolution.</p>
-              <ul class="topics-list">
-                <li>Merging features & git conflict resolution</li>
-                <li>Interface integrations and local state validation</li>
-                <li>Conducting team review sessions and code checks</li>
-                <li>Shared utilities setup</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Day 11 -->
-        <div class="roadmap-item" data-week="week3" id="day-11">
-          <div class="roadmap-main">
-            <div class="checkbox-container" aria-label="Mark Day 11 Completed">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-            </div>
-            <div class="day-badge">DAY 11</div>
-            <div class="day-details">
-              <span class="day-title">Mid-Project Review</span>
-              <span class="day-subtitle">Week 3 — Build, Ship & Demo</span>
-            </div>
-            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div class="roadmap-expandable">
-            <div class="expandable-content">
-              <p>Gathering feedback on early beta, prioritizing adjustments, and verifying progress.</p>
-              <ul class="topics-list">
-                <li>UI audits and interactive usability checkups</li>
-                <li>Analyzing performance delays or rendering issues</li>
-                <li>Pruning excessive scopes to secure deployment timing</li>
-                <li>Staging builds deployment</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Day 12 -->
-        <div class="roadmap-item" data-week="week3" id="day-12">
-          <div class="roadmap-main">
-            <div class="checkbox-container" aria-label="Mark Day 12 Completed">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-            </div>
-            <div class="day-badge">DAY 12</div>
-            <div class="day-details">
-              <span class="day-title">Deployment & Git Collaboration</span>
-              <span class="day-subtitle">Week 3 — Build, Ship & Demo</span>
-            </div>
-            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div class="roadmap-expandable">
-            <div class="expandable-content">
-              <p>Deploying product structures to production hosts and verifying automation actions.</p>
-              <ul class="topics-list">
-                <li>Deploying on Vercel, Netlify, or Github Pages</li>
-                <li>Configuring environmental variables & API limits</li>
-                <li>CI/CD setup with GitHub Actions</li>
-                <li>Checking security headers & certificate bindings</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Day 13 -->
-        <div class="roadmap-item" data-week="week3" id="day-13">
-          <div class="roadmap-main">
-            <div class="checkbox-container" aria-label="Mark Day 13 Completed">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-            </div>
-            <div class="day-badge">DAY 13</div>
-            <div class="day-details">
-              <span class="day-title">Bug-fix & Polish</span>
-              <span class="day-subtitle">Week 3 — Build, Ship & Demo</span>
-            </div>
-            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div class="roadmap-expandable">
-            <div class="expandable-content">
-              <p>Addressing edge-cases, stabilizing layout shifts, and polishing core micro-animations.</p>
-              <ul class="topics-list">
-                <li>Core Web Vitals optimizations (LCP, CLS, FID)</li>
-                <li>Cross-device, cross-browser styling fixes</li>
-                <li>Custom animations and interface transitions</li>
-                <li>Code splitting, asset optimizations, and lazy loading</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Day 14 -->
-        <div class="roadmap-item" data-week="week3" id="day-14">
-          <div class="roadmap-main">
-            <div class="checkbox-container" aria-label="Mark Day 14 Completed">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-            </div>
-            <div class="day-badge">DAY 14</div>
-            <div class="day-details">
-              <span class="day-title">Final Submission</span>
-              <span class="day-subtitle">Week 3 — Build, Ship & Demo</span>
-            </div>
-            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div class="roadmap-expandable">
-            <div class="expandable-content">
-              <p>Finalizing codes, packaging instructions, and preparing user documentations.</p>
-              <ul class="topics-list">
-                <li>Writing README guides, feature summaries, and user manuals</li>
-                <li>Final testing on main release branches</li>
-                <li>Asset packaging and release tagging</li>
-                <li>Pre-flight checklist confirmation</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Day 15 -->
-        <div class="roadmap-item" data-week="week3" id="day-15">
-          <div class="roadmap-main">
-            <div class="checkbox-container" aria-label="Mark Day 15 Completed">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-            </div>
-            <div class="day-badge">DAY 15</div>
-            <div class="day-details">
-              <span class="day-title">🎓 DEMO DAY</span>
-              <span class="day-subtitle">Week 3 — Build, Ship & Demo</span>
-            </div>
-            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div class="roadmap-expandable">
-            <div class="expandable-content">
-              <p>Showcasing the completed implementation to users and celebrating the learning path.</p>
-              <ul class="topics-list">
-                <li>Deploying finalized builds to live servers</li>
-                <li>Conducting project showcase presentations</li>
-                <li>Receiving peer feedback & future path alignments</li>
-                <li>Celebrating graduation & next milestones definition</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Footer Card Banner -->
-    <footer class="footer-card">
-      <div class="footer-text-block">
-        <h3>Follow the build</h3>
-        <p>Daily updates on GitHub.</p>
-      </div>
-      <a href="https://github.com/SuyashSrivastava1/ZyoraLab-Internship" target="_blank" rel="noopener noreferrer" class="footer-btn">
-        View Repository
-        <!-- Arrow right SVG -->
-        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-        </svg>
-      </a>
-    </footer>
-  </div>
-
-  <!-- JavaScript Interactivity -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const themeToggle = document.getElementById('theme-toggle');
-      const htmlElement = document.documentElement;
-      const progressText = document.getElementById('progress-text');
-      const progressBar = document.getElementById('progress-bar');
-      const filterButtons = document.querySelectorAll('.filter-btn');
-      const roadmapItems = document.querySelectorAll('.roadmap-item');
-      
-      // Load saved Theme
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      htmlElement.setAttribute('data-theme', savedTheme);
-      
-      // Toggle Theme event
-      themeToggle.addEventListener('click', () => {
-        const currentTheme = htmlElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        htmlElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-      });
-
-      // Load saved checkbox states
-      const loadCheckboxState = () => {
-        let completedCount = 0;
-        roadmapItems.forEach((item, index) => {
-          const dayId = item.id;
-          const isCompleted = localStorage.getItem(dayId) === 'true';
-          
-          if (isCompleted) {
-            item.classList.add('completed');
-            completedCount++;
-          } else {
-            item.classList.remove('completed');
-          }
-        });
-        
-        // Calculate progress percentage
-        const progressPercentage = Math.round((completedCount / roadmapItems.length) * 100);
-        progressBar.style.width = `${progressPercentage}%`;
-        progressText.textContent = `${progressPercentage}% Completed`;
-      };
-
-      // Set up click listeners for roadmap items
-      roadmapItems.forEach((item) => {
-        const mainRow = item.querySelector('.roadmap-main');
-        const checkbox = item.querySelector('.checkbox-container');
-        
-        // Click on Checkbox container
-        checkbox.addEventListener('click', (e) => {
-          e.stopPropagation(); // prevent expanding when marking complete
-          const dayId = item.id;
-          const isCurrentlyCompleted = item.classList.contains('completed');
-          
-          if (isCurrentlyCompleted) {
-            item.classList.remove('completed');
-            localStorage.setItem(dayId, 'false');
-          } else {
-            item.classList.add('completed');
-            localStorage.setItem(dayId, 'true');
-          }
-          
-          loadCheckboxState();
-        });
-
-        // Click on the rest of the row to expand details
-        mainRow.addEventListener('click', () => {
-          const isExpanded = item.classList.contains('expanded');
-          
-          // Collapse other expanded items first (optional, standard accordion feel)
-          roadmapItems.forEach((otherItem) => {
-            if (otherItem !== item) {
-              otherItem.classList.remove('expanded');
-            }
-          });
-          
-          if (isExpanded) {
-            item.classList.remove('expanded');
-          } else {
-            item.classList.add('expanded');
-          }
-        });
-      });
-
-      // Filter handling
-      filterButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-          const filterValue = button.getAttribute('data-filter');
-          
-          // Toggle active filter button class
-          filterButtons.forEach(btn => btn.classList.remove('active'));
-          button.classList.add('active');
-          
-          // Apply filter list animation
-          roadmapItems.forEach((item) => {
-            if (filterValue === 'all' || item.getAttribute('data-week') === filterValue) {
-              item.style.display = 'flex';
-              setTimeout(() => {
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-              }, 10);
-            } else {
-              item.style.opacity = '0';
-              item.style.transform = 'translateY(-8px)';
-              // Use timeout to delay hide display for smooth transition
-              setTimeout(() => {
-                item.style.display = 'none';
-              }, 200);
-            }
-          });
-        });
-      });
-
-      // Initial progress load
-      loadCheckboxState();
-    });
-  </script>
 </body>
 </html>
