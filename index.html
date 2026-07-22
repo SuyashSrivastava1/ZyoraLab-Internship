@@ -5,15 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Suyash Srivastava — B.Tech Student & Web Developer Portfolio</title>
   <meta name="description" content="Personal portfolio, 15-day developer launch roadmap, and technical showcase of Suyash Srivastava.">
+  <!-- Google Fonts: Outfit (Headings) & Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Site Header & Main Navigation -->
-  <header>
-    <a href="#" aria-label="Home — ZyoraLabs"><strong>Zyora</strong>Labs</a>
+  <header class="site-header">
+    <a href="#" class="logo" aria-label="Home — ZyoraLabs"><strong>Zyora</strong>Labs</a>
     <nav aria-label="Main Navigation">
-      <ul>
+      <ul class="nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#roadmap">15-Day Roadmap</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -26,33 +34,137 @@
   <main id="main-content">
 
     <!-- About / Hero Section -->
-    <section id="about" aria-labelledby="about-heading">
-      <article>
-        <header>
-          <p><small>✦ DEVELOPER LAUNCH PAGE</small></p>
+    <section id="about" aria-labelledby="about-heading" class="section hero-section">
+      <article class="hero-article">
+        <header class="section-header hero-header">
+          <p><small class="accent-badge">✦ DEVELOPER LAUNCH PAGE</small></p>
           <h1 id="about-heading">Suyash Srivastava</h1>
-          <h2>B.Tech Student & Software Developer</h2>
+          <h2 class="hero-role">B.Tech Student & Software Developer</h2>
         </header>
 
-        <p>
+        <p class="hero-bio">
           Hi, I'm Suyash. I'm a B.Tech student pushing the boundaries of code and aesthetics. I'm passionate about building clean, functional, and delightful digital experiences using modern web standards and architectural best practices.
         </p>
 
-        <blockquote>
+        <blockquote class="hero-quote">
           <p>"I joined this challenge to push my creative limits and master new technologies through rapid, daily iteration."</p>
           <footer>— <cite>Suyash Srivastava, ZyoraLab Internship</cite></footer>
         </blockquote>
       </article>
     </section>
 
-    <hr>
+    <hr class="section-divider">
+
+    <!-- Skills Showcase Section (Flexbox Cards) -->
+    <section id="skills" aria-labelledby="skills-heading" class="section">
+      <header class="section-header">
+        <p><small class="accent-badge">✦ TECHNICAL ARSENAL</small></p>
+        <h2 id="skills-heading">Core Competencies & Skills</h2>
+        <p class="section-subtitle">A curated set of technologies, architectural standards, and developer tools I leverage to build high-velocity web applications.</p>
+      </header>
+
+      <ul class="skills-grid" aria-label="Technical Skills List">
+        <li class="skill-card">
+          <span class="skill-icon" aria-hidden="true">🌐</span>
+          <div class="skill-content">
+            <h3>Semantic HTML5 & A11y</h3>
+            <p>WAI-ARIA landmarks, SEO-friendly structures, and zero-JS native interaction patterns.</p>
+          </div>
+        </li>
+        <li class="skill-card">
+          <span class="skill-icon" aria-hidden="true">🎨</span>
+          <div class="skill-content">
+            <h3>Modern CSS Architecture</h3>
+            <p>Flexbox layouts, CSS Grid systems, custom properties, and fluid responsive design.</p>
+          </div>
+        </li>
+        <li class="skill-card">
+          <span class="skill-icon" aria-hidden="true">⚡</span>
+          <div class="skill-content">
+            <h3>JavaScript (ES6+) & DOM</h3>
+            <p>Asynchronous workflows, event propagation cycles, and dynamic data transformations.</p>
+          </div>
+        </li>
+        <li class="skill-card">
+          <span class="skill-icon" aria-hidden="true">⚛️</span>
+          <div class="skill-content">
+            <h3>React & Component Engineering</h3>
+            <p>Declarative UI architecture, custom Hooks, Virtual DOM optimization, and state management.</p>
+          </div>
+        </li>
+        <li class="skill-card">
+          <span class="skill-icon" aria-hidden="true">🛠️</span>
+          <div class="skill-content">
+            <h3>Git & Developer Workflows</h3>
+            <p>Advanced branching strategies, terminal mastery, clean PR practices, and Vite automation.</p>
+          </div>
+        </li>
+        <li class="skill-card">
+          <span class="skill-icon" aria-hidden="true">🚀</span>
+          <div class="skill-content">
+            <h3>Performance & Web Standards</h3>
+            <p>Core Web Vitals optimization, asset lazy loading, and meticulous cross-device polish.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Education History Table -->
+    <section id="education" aria-labelledby="education-heading" class="section">
+      <header class="section-header">
+        <p><small class="accent-badge">✦ ACADEMIC FOUNDATION</small></p>
+        <h2 id="education-heading">Education History</h2>
+        <p class="section-subtitle">Structured academic background and rigorous computer science coursework.</p>
+      </header>
+
+      <div class="table-container">
+        <table aria-label="Academic qualifications and degrees" class="education-table">
+          <caption>Summary of degrees, institutions, and completion timeline</caption>
+          <thead>
+            <tr>
+              <th scope="col">Degree / Qualification</th>
+              <th scope="col">Institution</th>
+              <th scope="col">Focus & Key Coursework</th>
+              <th scope="col">Timeline</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Bachelor of Technology (B.Tech)</strong></td>
+              <td>Reputed Engineering Institute</td>
+              <td>Computer Science & Engineering, Data Structures, Algorithms, Web Systems</td>
+              <td><span class="badge">2023 — Present</span></td>
+            </tr>
+            <tr>
+              <td><strong>Higher Secondary Education (12th)</strong></td>
+              <td>Senior Secondary School (CBSE)</td>
+              <td>Physics, Chemistry, Mathematics, and Computer Science</td>
+              <td>2021 — 2023</td>
+            </tr>
+            <tr>
+              <td><strong>Secondary School Examination (10th)</strong></td>
+              <td>Secondary School (CBSE)</td>
+              <td>Core Science, Mathematics, and Foundations of Information Technology</td>
+              <td>2019 — 2021</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <hr class="section-divider">
 
     <!-- 15-Day Roadmap Timeline Section -->
-    <section id="roadmap" aria-labelledby="roadmap-heading">
-      <h2 id="roadmap-heading">The 15-Day Roadmap</h2>
-      <p>Follow my technical journey through the 3-week foundation, build, and shipping phases. Click any day below to reveal detailed learning topics in native HTML:</p>
+    <section id="roadmap" aria-labelledby="roadmap-heading" class="section">
+      <header class="section-header">
+        <p><small class="accent-badge">✦ LEARNING TIMELINE</small></p>
+        <h2 id="roadmap-heading">The 15-Day Roadmap</h2>
+        <p class="section-subtitle">Follow my technical journey through the 3-week foundation, build, and shipping phases. Click any day below to reveal detailed topics in native HTML accordion cards:</p>
+      </header>
 
-      <ol>
+      <ol class="roadmap-list">
         <li>
           <details>
             <summary><strong>DAY 01: Kickoff + Developer Workflow</strong> <small>(Week 1 — Foundations)</small></summary>
@@ -253,34 +365,42 @@
     <hr>
 
     <!-- Contact Section with Accessible Form -->
-    <section id="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Get In Touch</h2>
-      <p>Have a question, collaboration opportunity, or feedback on my build? Send a message below (form submission logic will be wired up on Day 5):</p>
+    <section id="contact" aria-labelledby="contact-heading" class="section">
+      <header class="section-header">
+        <p><small class="accent-badge">✦ GET IN TOUCH</small></p>
+        <h2 id="contact-heading">Let's Build Something Together</h2>
+        <p class="section-subtitle">Have a question, collaboration opportunity, or feedback on my build? Send a message below:</p>
+      </header>
 
-      <form action="#" method="post" aria-label="Contact Form">
-        <fieldset>
-          <legend>Contact Information & Message</legend>
+      <div class="form-card">
+        <form action="#" method="post" aria-label="Contact Form" class="contact-form">
+          <fieldset>
+            <legend class="sr-only">Contact Information & Message</legend>
 
-          <p>
-            <label for="name">Full Name (<abbr title="required">*</abbr>):</label><br>
-            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Enter your full name">
-          </p>
+            <div class="form-group">
+              <label for="name">Full Name <span class="required" title="required">*</span></label>
+              <input type="text" id="name" name="name" required autocomplete="name" placeholder="Enter your full name">
+            </div>
 
-          <p>
-            <label for="email">Email Address (<abbr title="required">*</abbr>):</label><br>
-            <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
-          </p>
+            <div class="form-group">
+              <label for="email">Email Address <span class="required" title="required">*</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+            </div>
 
-          <p>
-            <label for="message">Your Message (<abbr title="required">*</abbr>):</label><br>
-            <textarea id="message" name="message" rows="5" cols="40" required placeholder="Write your message here..."></textarea>
-          </p>
+            <div class="form-group">
+              <label for="message">Your Message <span class="required" title="required">*</span></label>
+              <textarea id="message" name="message" rows="5" required placeholder="Write your message here..."></textarea>
+            </div>
 
-          <p>
-            <button type="submit">Send Message</button>
-          </p>
-        </fieldset>
-      </form>
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">
+                <span>Send Message</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
     </section>
 
   </main>
@@ -288,12 +408,15 @@
   <hr>
 
   <!-- Site Footer -->
-  <footer>
-    <p><small>&copy; 2026 Suyash Srivastava. Built with pure semantic HTML5 for the ZyoraLab Internship.</small></p>
-    <p>
-      <a href="https://github.com/SuyashSrivastava1" target="_blank" rel="noopener noreferrer">GitHub Profile</a> | 
-      <a href="https://github.com/SuyashSrivastava1/ZyoraLab-Internship" target="_blank" rel="noopener noreferrer">View Repository</a>
-    </p>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p><small>&copy; 2026 Suyash Srivastava. Built with pure semantic HTML5 and custom Flexbox CSS for the ZyoraLab Internship.</small></p>
+      <div class="footer-links">
+        <a href="https://github.com/SuyashSrivastava1" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+        <span class="separator" aria-hidden="true">|</span>
+        <a href="https://github.com/SuyashSrivastava1/ZyoraLab-Internship" target="_blank" rel="noopener noreferrer">View Repository</a>
+      </div>
+    </div>
   </footer>
 
 </body>

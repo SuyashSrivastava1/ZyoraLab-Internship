@@ -1,0 +1,660 @@
+/* ==========================================================================
+   1. CSS RESET & CORE VARIABLES (Box Model & Design System Foundation)
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* ONE Color Scheme (3 Core Colors Max: Midnight Navy, Slate Card, Electric Indigo) */
+  --color-bg: #0b0f19;              /* Primary Background: Deep Obsidian Midnight */
+  --color-surface: #151c2e;         /* Secondary Background: Slate Card Surface */
+  --color-primary: #6366f1;         /* Accent Color: Electric Indigo / Violet */
+  --color-primary-hover: #818cf8;   /* Interactive Hover Glow */
+  --color-text: #f8fafc;            /* Primary Heading Text: Crisp White */
+  --color-text-muted: #94a3b8;      /* Secondary Body Text: Refined Slate Gray */
+
+  /* ONE Font Pairing (Google Fonts) */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Deliberate Box Model Spacing Tokens */
+  --section-padding: 5rem 6%;
+  --card-padding: 1.75rem;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Screen reader utility for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ==========================================================================
+   2. SITE HEADER & NAVIGATION (Horizontal Flexbox Bar)
+   ========================================================================== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 6%;
+  background: rgba(11, 15, 25, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.logo strong {
+  color: var(--color-primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.nav-links a:hover {
+  color: var(--color-text);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ==========================================================================
+   3. SECTIONS & DELIBERATE BOX MODEL SPACING
+   ========================================================================== */
+#main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section {
+  padding: var(--section-padding);
+}
+
+.section-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  margin: 1rem auto;
+  max-width: 1000px;
+}
+
+.section-header {
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+.accent-badge {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--color-primary-hover);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  background: rgba(99, 102, 241, 0.12);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+.section-header h1,
+.section-header h2 {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  max-width: 650px;
+}
+
+/* ==========================================================================
+   4. HERO / ABOUT SECTION
+   ========================================================================== */
+.hero-section {
+  padding-top: 6rem;
+  padding-bottom: 5rem;
+}
+
+.hero-header h1 {
+  font-size: 3.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.hero-role {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary-hover);
+  margin-bottom: 1.5rem;
+}
+
+.hero-bio {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  max-width: 760px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-quote {
+  background: var(--color-surface);
+  border-left: 4px solid var(--color-primary);
+  padding: 1.5rem 2rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  max-width: 760px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.hero-quote p {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+}
+
+.hero-quote footer {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   5. SKILLS SECTION (Flexbox CARDS with Padding, Border-Radius & Hover)
+   ========================================================================== */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skill-card {
+  flex: 1 1 calc(33.333% - 1.5rem);
+  min-width: 290px;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: var(--card-padding);
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), #a855f7);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(99, 102, 241, 0.45);
+  box-shadow: 0 16px 36px -8px rgba(99, 102, 241, 0.25);
+  background: rgba(21, 28, 46, 0.95);
+}
+
+.skill-card:hover::before {
+  opacity: 1;
+}
+
+.skill-icon {
+  font-size: 1.85rem;
+  background: rgba(99, 102, 241, 0.12);
+  padding: 0.85rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(99, 102, 241, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.35s ease;
+}
+
+.skill-card:hover .skill-icon {
+  transform: scale(1.08) rotate(3deg);
+}
+
+.skill-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 0.5rem 0;
+}
+
+.skill-content p {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ==========================================================================
+   6. EDUCATION TABLE (Deliberate Spacing, Borders & Readability)
+   ========================================================================== */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--color-surface);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.education-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.education-table caption {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  padding: 1rem 1.5rem;
+  text-align: right;
+  font-style: italic;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.education-table th {
+  background: rgba(255, 255, 255, 0.03);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  padding: 1.25rem 1.75rem;
+  border-bottom: 2px solid var(--color-primary);
+  letter-spacing: 0.02em;
+}
+
+.education-table td {
+  padding: 1.25rem 1.75rem;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.2s ease;
+  line-height: 1.6;
+}
+
+.education-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.education-table tbody tr:hover td {
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.education-table td strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 999px;
+  color: var(--color-primary-hover);
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   7. 15-DAY ROADMAP (Flexbox Accordion Cards)
+   ========================================================================== */
+.roadmap-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.roadmap-list details {
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.roadmap-list details[open] {
+  border-color: rgba(99, 102, 241, 0.4);
+  background: rgba(21, 28, 46, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.roadmap-list summary {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  list-style: none;
+  outline: none;
+}
+
+.roadmap-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.roadmap-list summary::after {
+  content: '+';
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--color-primary);
+  transition: transform 0.3s ease;
+}
+
+.roadmap-list details[open] summary::after {
+  content: '−';
+  transform: rotate(180deg);
+}
+
+.roadmap-list summary strong {
+  color: var(--color-text);
+}
+
+.roadmap-list summary small {
+  color: var(--color-text-muted);
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+.roadmap-list details p {
+  margin-top: 1.15rem;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.roadmap-list details ul {
+  margin: 0.75rem 0 0.5rem 1.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.roadmap-list details ul li::marker {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   8. CONTACT FORM (Deliberate Spacing, Borders & Readable Inputs)
+   ========================================================================== */
+.form-card {
+  max-width: 680px;
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-xl);
+  padding: 2.75rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.contact-form fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.form-group {
+  margin-bottom: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.required {
+  color: var(--color-primary);
+  margin-left: 0.25rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.95rem 1.25rem;
+  background: rgba(11, 15, 25, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(148, 163, 184, 0.45);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.22);
+  background: rgba(11, 15, 25, 0.95);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 2rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2.25rem;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 20px -4px rgba(99, 102, 241, 0.5);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px -4px rgba(99, 102, 241, 0.65);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   9. SITE FOOTER
+   ========================================================================== */
+.site-footer {
+  padding: 3rem 6%;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(11, 15, 25, 0.9);
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-content p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-links a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--color-primary-hover);
+}
+
+.footer-links .separator {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   10. RESPONSIVE DESIGN (Mobile & Tablet Breakpoints)
+   ========================================================================== */
+@media (max-width: 850px) {
+  :root {
+    --section-padding: 4rem 5%;
+  }
+
+  .site-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 5%;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+
+  .hero-header h1 {
+    font-size: 2.75rem;
+  }
+
+  .skill-card {
+    flex: 1 1 100%;
+  }
+
+  .form-card {
+    padding: 1.75rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
